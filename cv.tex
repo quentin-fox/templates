@@ -1,0 +1,106 @@
+%!TEX TS-program = xelatex
+\documentclass[12pt]{article}
+
+%requires XeLaTeX so that it can use system fonts
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{comment}
+\usepackage{geometry}
+
+%fonts
+\setmainfont{Garamond}
+
+
+%document colors for dark mode
+
+%\usepackage{darkmode}
+
+%margins
+
+\geometry{margin=2cm, top = 2cm, bottom = 2cm}
+
+\usepackage{fancyhdr}
+\pagestyle{empty}
+
+%for title
+\usepackage[hidelinks]{hyperref} %clickable emails and phone numbers
+\usepackage{soul} %for underline options
+%for each cvitem
+\usepackage{xparse} %for declaredocument(...)
+\usepackage{array} %for fixed width of table columns
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep, topsep=0pt, leftmargin = 1cm}
+\setlength\parindent{0pt}
+
+
+
+\DeclareDocumentEnvironment{cvitem}{o o o o}{
+\begin{tabular}{@{}m{10cm} m{5cm} }
+		\textbf{#1}, \emph{#2} & \textbf{#3}
+\end{tabular}
+\begin{itemize}
+
+%\renewcommand{\labelitemi}{-}
+}
+{\end{itemize}
+\vspace{6pt}} %this is where you adjust the spacing between cv items
+
+\newcommand{\cvsection}[1]{\vspace{6pt}\textbf{\underline{\smash{\large{#1:}}}}\vspace{2pt}}
+
+\newcommand{\Name}{}
+\newcommand{\Address}{}
+\newcommand{\Phone}{\href{tel:}{}}
+\newcommand{\Email}{\href{mailto:}{}}
+% \newcommand{\Email}{\href{mailto:quentinbennettfox@gmail.com}{quentinbennettfox@gmail.com}}
+
+
+
+
+\begin{document}
+
+
+%used for creating the title
+\begin{center}
+	\setul{}{1.1pt}
+	{\fontsize{28pt}{28pt}\selectfont \ul{\MakeUppercase{\Name{}}}}
+	\par \vspace{5pt}
+	{\fontsize{13pt}{13pt}\selectfont
+	\Address{} \par Phone: \Phone\ Email: \Email{}}
+\end{center}
+
+%%end title
+
+\cvsection{Education}
+
+
+\begin{cvitem}[Degree Letters][University Name][Timeframe]
+	\item Degree Name
+  \item cGPA: x.xx
+\end{cvitem}
+
+\cvsection{Work Experience}
+
+\begin{cvitem}[Employer][Position][Timeframe]
+  \item position description
+\end{cvitem}
+
+\cvsection{Extracurricular Experience}
+\cvsection{Scholarships and Awards}
+
+\begin{tabular}{@{}m{10cm} >{\bfseries}m{5cm} }
+	%UTIHP Discovery Fund & 2018 \\
+	Award Name & Date Awarded \\
+	Award Name & Date Awarded \\
+	Award Name & Date Awarded \\
+	Award Name & Date Awarded \\
+\end{tabular}
+\vspace{12pt}
+
+\cvsection{Languages and Skills}
+
+\textbf{Languages:} 
+
+\textbf{Computer skills:} 
+
+\end{document}
